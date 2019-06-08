@@ -1,14 +1,7 @@
 ## isoensemble
-[![Build Status](https://travis-ci.org/chriswbartley/isoensemble.svg?branch=master)](https://travis-ci.org/chriswbartley/isoensemble)
-[![Appveyor Status](https://ci.appveyor.com/api/projects/status/github/chriswbartley/isoensemble)](https://ci.appveyor.com/project/chriswbartley/isoensemble)
-[![RTD Status](https://readthedocs.org/projects/isoensemble/badge/?version=latest
-)](https://readthedocs.org/projects/isoensemble/badge/?version=latest)
 
 
-
-IsoRandomForestClassifierClassifier is a Random Forest classifier with *partial* monotonicity capability (i.e. the ability to specify non-monotone features). It extends `scikit-learn's` RandomForestClassifier and inherits all `sci-kit learn` capabilities (and obviously requires `sci-kit learn`). The theory is described in Bartley C., Liu W., Reynolds M., 2017, *A Novel Framework for Partially Monotone Rule Ensembles.* ICDE submission, prepub, available [here](http://staffhome.ecm.uwa.edu.au/~19514733/). 
-
-It is very fast and moderately accurate. 
+IsoRandomForestClassifier is a Random Forest classifier with globally guaranteed monotonicity and partial monotonicity capability (i.e. the ability to specify both monotone and non-monotone features). It extends `scikit-learn's` RandomForestClassifier and inherits all `sci-kit learn` capabilities (and obviously requires `sci-kit learn`). It is described in Chapter 6 of the PhD thesis 'High Accuracy Partially Monotone Ordinal Classification', UWA 2019.
 
 ### Code Example
 First we define the monotone features, using the corresponding one-based `X` array column indices:
@@ -16,7 +9,7 @@ First we define the monotone features, using the corresponding one-based `X` arr
 incr_feats=[6,9]
 decr_feats=[1,8,13]
 ```
-The specify the hyperparameters (see original paper for explanation):
+The specify the usual RF hyperparameters:
 ```
 # Ensure you have a reasonable number of trees
 n_estimators=200
@@ -32,21 +25,6 @@ clf.fit(X, y)
 y_pred = clf.predict(X)
 ```	
 Of course usually the above will be embedded in some estimate of generalisation error such as out-of-box (oob) score or cross-validation.
-
-### Documentation
-
-For more examples see [the documentation](http://isoensemble.readthedocs.io/en/latest/index.html).
-
-### Installation
-
-To install, simply use:
-```
-pip install isoensemble
-```
-
-### Documentation
-
-Documentation is provided [here](http://isoensemble.readthedocs.io/en/latest/index.html).
 
 ### Contributors
 
