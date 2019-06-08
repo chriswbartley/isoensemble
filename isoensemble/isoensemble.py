@@ -32,22 +32,13 @@ Single and multi-output problems are both handled.
 
 """
 
-# Authors: Gilles Louppe <g.louppe@gmail.com>
-#          Brian Holt <bdholt1@gmail.com>
-#          Joly Arnaud <arnaud.v.joly@gmail.com>
-#          Fares Hedayati <fares.hedayati@gmail.com>
+# Authors: Chris Bartley <chris@bartleys.net>
 #
 # License: BSD 3 clause
 
 from sklearn.ensemble.forest import ForestClassifier
-#from pmtree import PMDecisionTreeClassifier
-#from isoensemble import IsoDecisionTreeClassifier
 import isoensemble
-#import warnings
 import numpy as np
-#from sklearn.utils import check_random_state, check_array, compute_sample_weight
-#from numpy import bincount #, parallel_helper
-#from softcomp import SoftComp
 
 
 class IsoRandomForestClassifier(ForestClassifier):
@@ -320,11 +311,6 @@ class IsoRandomForestClassifier(ForestClassifier):
             Returns self.
         """
 
-        #else:# temp
-        #    self.soft_comp_obj=SoftComp(n_feats=X.shape[1],incr_feats=self.incr_feats,decr_feats=self.decr_feats)
-#        
-#        [comparability,mono_index,mono_index_strict]=self.soft_comp_obj.calc_monotonicity(X,y)
-#        print(comparability)
         # perform standard fit        
         super(IsoRandomForestClassifier,self).fit(X, y, sample_weight)
         #print('wrong version')
@@ -369,7 +355,6 @@ class IsoRandomForestClassifier(ForestClassifier):
             The predicted classes.
 
         """
-        #proba=np.zeros([X.shape[0],len(self.estimators_)],dtype=np.float64)
         proba = self.predict_proba(X)
         cum_proba=proba.copy()
         for i in np.arange(1,proba.shape[1]):
@@ -387,20 +372,3 @@ class IsoRandomForestClassifier(ForestClassifier):
             
             
             
-#            n_samples = proba[0].shape[0]
-#
-#            predictions = np.zeros((n_samples, self.n_outputs_))
-#
-#
-#
-#            for k in range(self.n_outputs_):
-#
-#                predictions[:, k] = self.classes_[k].take(np.argmax(proba[k],
-#
-#                                                                    axis=1),
-#
-#                                                          axis=0)
-#
-#
-#
-#            return predictions
