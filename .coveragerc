@@ -1,0 +1,7 @@
+[run]
+branch = True
+source = isoensemble/*
+include = isoensemble/*
+omit = */setup.py
+[report]
+include = isoensemble/*
