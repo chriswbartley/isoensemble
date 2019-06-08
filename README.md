@@ -26,14 +26,6 @@ y_pred = clf.predict(X)
 ```	
 Of course usually the above will be embedded in some estimate of generalisation error such as out-of-box (oob) score or cross-validation.
 
-### Contributors
-
-Pull requests welcome! Notes:
- - We use the
-[PEP8 code formatting standard](https://www.python.org/dev/peps/pep-0008/), and
-we enforce this by running a code-linter called
-[`flake8`](http://flake8.pycqa.org/en/latest/) during continuous integration.
- - Continuous integration is used to run the tests in `/isoensemble/tests/test_isoensemble.py`, using [Travis](https://travis-ci.org/chriswbartley/isoensemble.svg?branch=master) (Linux) and [Appveyor](https://ci.appveyor.com/api/projects/status/github/chriswbartley/isoensemble) (Windows).
  
 ### License
 BSD 3 Clause, Copyright (c) 2017, Christopher Bartley
